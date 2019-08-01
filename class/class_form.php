@@ -90,19 +90,20 @@ class Form {
 			$recap_mail->isHTML(true);
 			$recap_mail->ClearAllRecipients();
 			$recap_mail->addAddress("fdigiuseppe@websolute.it");
-			$recap_mail->Subject = "CHECK MAIL NL ".$f->getOggetto();
 
 			if(!$mail->send())
 			{
 					//echo "Mailer Error: " . $mail->ErrorInfo;
-					$recap_mail->Body = "Mailer Error: " . $mail->ErrorInfo. "<br/><br/><br/>". $f->getMessaggio();
+					$recap_mail->Subject = "CHECK MAIL NL KO CONTROLLARE".$f->getOggetto();
+					$recap_mail->Body = "MAIL INVIO KO". "<br/>"."Mailer Error: " . $mail->ErrorInfo. "<br/><br/><br/>". $f->getMessaggio();
 					$recap_mail->send();
 					$result = 0;
 			}
 			else
 			{
 					//echo "Message has been sent successfully";
-					$recap_mail->Body = "MAIL INVIO OK". "<br/><br/><br/>". $f->getMessaggio();
+					$recap_mail->Subject = "CHECK MAIL NL OK ".$f->getOggetto();
+					$recap_mail->Body = "Inviata a: ".$f->getDestinatario(). "<br/>"."MAIL INVIO OK". "<br/>". $f->getMessaggio();
 					$recap_mail->send();
 					$result = 1;
 			}
