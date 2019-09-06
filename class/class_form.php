@@ -69,6 +69,7 @@ class Form {
 			$mail->Port = 25;                    
 			$mail->From = "newsletterTest@websolute.it";
 			$mail->FromName = utf8_decode("Newsletter Test");
+			$mail->CharSet = 'UTF-8';
 			//$mail->addBCC('fdigiuseppe@websolute.it', 'Test');
 			//$mail->addCustomHeader("BCC: fdigiuseppe@websolute.it"); 
 			//$mail-> AddCC ("");
